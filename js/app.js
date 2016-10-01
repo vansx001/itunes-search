@@ -27,7 +27,7 @@ $(document).ready(function () {
             for (var i = 0; i < results.length; i++) {
                 var item = results[i];
                 index += '<li class="results-list" id="search-results">';
-                index += '<img class="img-rounded img-responsive img-hover" src="' + item.artworkUrl100.replace('100x100','500x500') + '"/><br>';
+                index += '<img class="img-rounded img-responsive img-hover" src="' + item.artworkUrl100.replace('100x100','360x360') + '"/><br>';
                 index += '<h3>' + item.artistName + ' - ' + item.trackName + '</h3>';
                 if (item.collectionName !== undefined) {
                     index += '<h4>Album: ' + item.collectionName + '</h4>';
