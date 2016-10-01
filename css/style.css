@@ -1,18 +1,27 @@
-.search-results {
-    border: 1 px solid Gray;
-    margin - bottom: 5 px;
-    padding: 5 px;
-}
-.search-results .label {
-    display: inline - block;
-    width: 200 px;
-}
 .glyphicon {
-    color: #FFFF00;
+    color: #ffff00;
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
-.btn-default:hover{
+
+.btn-default:hover {
     color:#fff;
-    background-color:#7A7A7A;
-    border-color:#adadad
+    background-color:#7a7a7a;
+    border-color:#adadad;
+}
+
+.results-list {
+    display: inline-block;
+    vertical-align: top;
+    box-sizing: border-box;
+    padding: 10px;
+    margin: 5px;
+}
+
+.results-list img:hover {
+  transform: scale(1.1);
+  z-index: 2;
+}
+
+#page-selection {
+    display:none;
 }
