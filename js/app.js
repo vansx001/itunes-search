@@ -4,45 +4,47 @@ $(document).ready(function () {
         event.preventDefault();
         searchRequest();
     });
-
+            //search
     function searchRequest() {
-        var terms = $('#itunesSearchKeyword').val();
+        var searchKeyword = $('#itunesSearchKeyword').val();
         $.ajax({
             url: "https://itunes.apple.com/search?",
             type: "GET",
             dataType: "jsonp",
             data: {
-                term: terms,
+                term: searchKeyword,
                 limit: 25
             },
-            success: function (search) {
+            success: function (data) {
                 $('#itunes-results').children().remove();
-                displayResults(search);
+                displayResults(data);
             }
         });
-
-    function displayResults(search) {
-        var results = search.results;
-        var index = ''; //results will show up on the index page! 
+                //display
+        function displayResults(data) {
+            var searchResults = searchItems(data);
+            $('#itunes-results').html(searchResults); //displays results in the #itunes-results div 
+        }
+                //get search items
+        function searchItems(data) {
+            var results = data.results;
+            var searchResults = ''; //results will show up on the index page! 
             for (var i = 0; i < results.length; i++) {
                 var item = results[i];
-                index += '<li class="results-list" id="search-results">';
-                index += '<img class="img-rounded img-responsive img-hover" src="' + item.artworkUrl100.replace('100x100','360x360') + '"/><br>';
-                index += '<h4 class="resultsBold">Artist:</h4> <h4 class="resultsText">' + item.artistName + '</h4><br>';
-                index += '<h4 class="resultsBold">Song:</h4> <h4 class="resultsText">' + item.trackName + '</h4><br>';
-                if (item.collectionName !== undefined) {
-                    index += '<h4 class="resultsBold">Album:</h4> <h4 class="resultsText">' + item.collectionName + '</h4><br>';
-                    index += '<h4 class="resultsBold">Genre:</h4> <h4 class="resultsText">' + item.primaryGenreName + '</h4><br>';
-                    index += '<audio id="player" src="' + item.previewUrl + '" controls></audio>';
-                    
-                } else {
-                    index += '<h4 class="resultsBold">Album:</h4> <h4 class="resultsText">N/A</h4><br>';
+                if (item.previewUrl === undefined || item.collectionName === undefined) {
+                    continue;
                 }
-                index += '</li>';
-                $('#itunes-results').html(index); //displays results in the #itunes-results div 
+                searchResults += '<li class="results-list" id="search-results">';
+                searchResults += '<img class="img-rounded img-responsive img-hover" src="' + item.artworkUrl100.replace('100x100', '360x360') + '"/><br>';
+                searchResults += '<h4 class="resultsBold">Artist:</h4> <h4 class="resultsText">' + item.artistName + '</h4><br>';
+                searchResults += '<h4 class="resultsBold">Song:</h4> <h4 class="resultsText">' + item.trackName + '</h4><br>';
+                searchResults += '<h4 class="resultsBold">Album:</h4> <h4 class="resultsText">' + item.collectionName + '</h4><br>';
+                searchResults += '<h4 class="resultsBold">Genre:</h4> <h4 class="resultsText">' + item.primaryGenreName + '</h4><br>';
+                searchResults += '<audio id="player" src="' + item.previewUrl + '" controls></audio>';
+                searchResults += '</li>';
             }
+            return searchResults;
         }
-
         $("#lightening").fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
         // $('#listitems').paginate({itemsPerPage: 10});
     }
