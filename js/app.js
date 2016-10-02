@@ -28,14 +28,15 @@ $(document).ready(function () {
                 var item = results[i];
                 index += '<li class="results-list" id="search-results">';
                 index += '<img class="img-rounded img-responsive img-hover" src="' + item.artworkUrl100.replace('100x100','360x360') + '"/><br>';
-                index += '<h3>' + item.artistName + ' - ' + item.trackName + '</h3>';
+                index += '<h4 class="resultsBold">Artist:</h4> <h4 class="resultsText">' + item.artistName + '</h4><br>';
+                index += '<h4 class="resultsBold">Song:</h4> <h4 class="resultsText">' + item.trackName + '</h4><br>';
                 if (item.collectionName !== undefined) {
-                    index += '<h4>Album: ' + item.collectionName + '</h4>';
-                    index += '<h4>Genre: ' + item.primaryGenreName + '</h4>';
-                    index += '<audio src="' + item.previewUrl + '"controls></audio><br>';
+                    index += '<h4 class="resultsBold">Album:</h4> <h4 class="resultsText">' + item.collectionName + '</h4><br>';
+                    index += '<h4 class="resultsBold">Genre:</h4> <h4 class="resultsText">' + item.primaryGenreName + '</h4><br>';
+                    index += '<audio id="player" src="' + item.previewUrl + '" controls></audio>';
                     
                 } else {
-                    index += '<h4>Album: N/A </h4>';
+                    index += '<h4 class="resultsBold">Album:</h4> <h4 class="resultsText">N/A</h4><br>';
                 }
                 index += '</li>';
                 $('#itunes-results').html(index); //displays results in the #itunes-results div 
