@@ -12,37 +12,6 @@
 .results-list {
     display: inline-block;
     vertical-align: top;
-    box-sizing: border-box;
-    padding: 10px;
-    margin: 5px;
-}
-
-.results-list img:hover {
-    opacity: 1;
-    -webkit-animation: flash 1.5s;
-    animation: flash 1.5s;
-}
-    @-webkit-keyframes flash {0% {opacity: .4;} 100% {opacity: 1;}}
-    @keyframes flash {0% {opacity: .4;} 100% {opacity: 1;}}
-
-#page-selection {
-    display:none;
-}
-
-input:-webkit-autofill {.glyphicon {
-    color: #ffff00;
-    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-}
-
-.btn-default:hover {
-    color:#fff;
-    background-color:#7a7a7a;
-    border-color:#adadad;
-}
-
-.results-list {
-    display: inline-block;
-    vertical-align: top;
     padding: 10px;
     margin: 15px;
     max-width:500px;
@@ -89,9 +58,3 @@ input:-webkit-autofill:focus{
 #player {
  width: 100%;
 }​
-    -webkit-box-shadow: 0 0 0px 1000px white inset;
-}
-
-input:-webkit-autofill:focus{
--webkit-box-shadow: 0 0 0px 1000px white inset, 0 0 8px rgba(82, 168, 236, 0.6);
-} 
